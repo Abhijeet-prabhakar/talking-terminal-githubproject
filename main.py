@@ -5,10 +5,15 @@ import webbrowser
 import shutil
 import pyaudio
 import os
+import random
+# import requests
 
 thankyou = "thanks for using me Bye"
 creator1 = 'hey i am a talking terminal made by abhijeet prabhakar'
-help1 = "open youtube, open github, open browser, open stackoverflow, open spotify, stop, quit, move file, copy file, delete file"
+help1 = "open youtube, open github, open browser, open stackoverflow, open spotify, stop, quit, move file, copy file, delete file, creator, read file, write file, choose random number"
+exit1 ="press any key to exit"
+success = "process was succeful"
+
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -73,7 +78,7 @@ elif command1 == "help":
 
 elif command1 == "open youtube":
   speak('opening youtube')
-  webbrowser.open('www.bing.com')
+  webbrowser.open('www.youtube.com')
   speak(thankyou)
   speak(creator1)
   quit()
@@ -123,6 +128,34 @@ elif command1 == "delete file":
   deletefilename = input('add the file name:')
   os.remove(deletefilename)
   speak('file successfully deleted')
+  quit()
+
+elif command1 == "read file":
+  readfilename = input('input file name:')
+  file = open(readfilename)
+  print(file.read())
+  speak("process was successful")
+  input(exit1)
+  quit()
+
+elif command1 == "write file":
+  writefile1 = input('input file name')
+  inputtext = input('input content')
+  file = open(writefile1,"w")
+  print(file.write(inputtext))
+  speak(success)
+  input(exit1)
+
+elif command1 == "choose random number":
+  print(random.randrange(1, 10000000))
+  speak("ha ha ha I am good at maths not like you")
+  print("devloper:I'm sorry sometime's this guy haaaaaa")
+  input(exit1)
+  quit()
+
+elif command1 == "creator":
+  print(creator1)
+  speak(creator1)
   quit()
 
 elif command1 =="stop":
