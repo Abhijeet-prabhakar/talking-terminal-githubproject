@@ -4,10 +4,11 @@ import datetime
 import webbrowser
 import shutil
 import pyaudio
+import os
 
 thankyou = "thanks for using me Bye"
 creator1 = 'hey i am a talking terminal made by abhijeet prabhakar'
-help1 = "open youtube, open github, open browser"
+help1 = "open youtube, open github, open browser, open stackoverflow, open spotify, stop, quit, move file, copy file, delete file"
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -79,9 +80,58 @@ elif command1 == "open youtube":
 
 elif command1 == "open github":
   speak('opening github')
-  webbrowser.open('www.bing.com')
+  webbrowser.open('www.github.com')
   speak(thankyou)
   speak(creator1)
+  quit()
+
+elif command1 == "open stackoverflow":
+  speak('opening stackoverflow')
+  webbrowser.open('www.stackoverflow.com')
+  speak(thankyou)
+  speak(creator1)
+  quit()
+
+elif command1 == "open spotify":
+  speak('opening spotify')
+  webbrowser.open('www.spotify.com')
+  speak(thankyou)
+  speak(creator1)
+  quit()
+
+elif command1 == "move file":
+  movefile1 = input('add old file path:')
+  movefile2 = input("target:")
+  shutil.move(movefile1,movefile2)
+  speak("moved file from")
+  speak(movefile1)
+  speak('to')
+  speak(movefile2)
+  quit()
+
+elif command1 == "copy file":
+  movecopy1 = input('add old file path:')
+  movecopy2 = input("target:")
+  shutil.copy(movecopy1,movecopy2)
+  speak("copied file from")
+  speak(movecopy1)
+  speak('to')
+  speak(movecopy2)
+  quit()
+
+elif command1 == "delete file":
+  deletefilename = input('add the file name:')
+  os.remove(deletefilename)
+  speak('file successfully deleted')
+  quit()
+
+elif command1 =="stop":
+  speak("stopping the program")
+  print("quit")
+  quit()
+
+elif command1 =="quit":
+  print("quit")
   quit()
 
 else:
